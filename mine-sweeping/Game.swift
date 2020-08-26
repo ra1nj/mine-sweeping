@@ -19,6 +19,9 @@ struct Game {
     var size:Int
     var status:GameStatus
     
+    var score:Int = 0
+    
+    var bonus:Int = 100
     
     init(size:Int) {
         self.status = .running
@@ -41,7 +44,16 @@ struct Game {
         }
     }
     
+    init(size:Int, score:Int) {
+        self.init(size: size)
+        self.score = score
+    }
     
+    mutating func longPress(x:Int,y:Int){
+        if(board[y][x].value == "M" || board[y][x].value == "E"){
+            board[y][x].isFlagged = !board[y][x].isFlagged
+        }
+    }
     
     mutating func tap(x:Int,y:Int){
         if(x < 0 || x >= board[0].count || y < 0 || y >= board.count){
@@ -56,6 +68,7 @@ struct Game {
             let num = findMineNum(x: x, y: y)
             if(num == 0){
                 board[y][x].value = "B"
+                score += bonus
                 for i in y-1...y+1{
                     for j in x-1...x+1{
                         tap(x: j, y: i)
@@ -64,6 +77,7 @@ struct Game {
                 
             }else{
                 board[y][x].value = String(num)
+                score += bonus
             }
         }
         if(isWin()){

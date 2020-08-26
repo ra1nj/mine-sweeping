@@ -30,9 +30,17 @@ class GameViewModel: ObservableObject {
         model.status
     }
     
+    var score:Int {
+        model.score
+    }
+    
     //MARK: - Intent(s)
     func tap(x:Int, y:Int) {
         model.tap(x: x,y: y)
+    }
+    
+    func longPress(x:Int,y:Int){
+        model.longPress(x:x,y:y)
     }
     
     func newGame(){
@@ -41,6 +49,6 @@ class GameViewModel: ObservableObject {
     
     func nextLevel(){
         GameViewModel.level += 1
-        newGame()
+        model = Game(size: GameViewModel.level, score: score)
     }
 }

@@ -22,30 +22,19 @@ struct CardView: View {
         ZStack{
             RoundedRectangle(cornerRadius:10).fill(card.isFaceDown ? Color.orange : Color.gray)
                 .rotation3DEffect(.init(degrees:card.isFaceDown ? 0 : 180), axis: (x:0,y:1,z:0))
+            renderFlag(size: size)
             Text(card.displayText).font(Font.system(size: size.width * 0.5))
         }
         .transition(.slide).animation(.easeInOut)
     }
     
-//    private func displayText() -> String {
-//        switch value {
-//        case "X":
-//            return "💣"
-//        case "E","B","M":
-//            return ""
-//        default:
-//            return value
-//        }
-//    }
-    
-    
-//    private func isFaceDown () -> Bool {
-//        if(value == "E" || value == "M"){
-//            return true
-//        }else{
-//            return false
-//        }
-//    }
+    @ViewBuilder
+    private func renderFlag(size:CGSize) -> some View {
+        if(card.isFaceDown && card.isFlagged){
+            Text("🏴‍☠️").font(Font.system(size: size.width * 0.5))
+                .transition(.move(edge: .top)).animation(.easeInOut)
+        }
+    }
     
 }
 

@@ -18,6 +18,7 @@
 		04870E3024EE2D630077462E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04870E2F24EE2D630077462E /* CardView.swift */; };
 		04870E3424EE46620077462E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04870E3324EE46620077462E /* Game.swift */; };
 		049A0AAB24F655B9004D5C72 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A0AAA24F655B9004D5C72 /* Card.swift */; };
+		049A0AAD24F66B2A004D5C72 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049A0AAC24F66B2A004D5C72 /* iconfont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		04870E2F24EE2D630077462E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		04870E3324EE46620077462E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		049A0AAA24F655B9004D5C72 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		049A0AAC24F66B2A004D5C72 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				04870E1B24EE29AC0077462E /* SceneDelegate.swift */,
 				04870E1D24EE29AC0077462E /* ContentView.swift */,
 				04870E1F24EE29AF0077462E /* Assets.xcassets */,
+				049A0AAC24F66B2A004D5C72 /* iconfont.ttf */,
 				04870E2424EE29AF0077462E /* LaunchScreen.storyboard */,
 				04870E2724EE29AF0077462E /* Info.plist */,
 				049A0AAA24F655B9004D5C72 /* Card.swift */,
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049A0AAD24F66B2A004D5C72 /* iconfont.ttf in Resources */,
 				04870E2624EE29AF0077462E /* LaunchScreen.storyboard in Resources */,
 				04870E2324EE29AF0077462E /* Preview Assets.xcassets in Resources */,
 				04870E2024EE29AF0077462E /* Assets.xcassets in Resources */,

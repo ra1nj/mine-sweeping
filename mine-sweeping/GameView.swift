@@ -16,6 +16,7 @@ struct GameView: View {
     var body: some View {
         ZStack{
             VStack{
+                score()
                 ForEach(0..<viewModel.size,id:\.self) {i in
                     HStack{
                         ForEach(0..<self.viewModel.size,id:\.self) {j in
@@ -25,14 +26,27 @@ struct GameView: View {
                                         self.viewModel.tap(x: j, y: i)
                                     }
                                 })
+                                .gesture(LongPressGesture(minimumDuration: 0.5, maximumDistance: 50).onEnded({_ in
+                                    if(self.viewModel.status == GameStatus.running){
+                                        self.viewModel.longPress(x: j, y: i)
+                                    }
+                                }))
                         }
                         
                     }
                 }
             }
-//            renderLost()
             renderGameStatus()
         }.padding()
+    }
+    
+    func score() -> some View {
+        let score = String(viewModel.score)
+        return HStack{
+            ForEach(Array(score),id: \.self){char in
+                Image(systemName: "\(char).square.fill")
+            }
+        }
     }
     
     @ViewBuilder
