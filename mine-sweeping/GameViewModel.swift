@@ -18,7 +18,7 @@ class GameViewModel: ObservableObject {
     }
     
     //MARK: - Access to the model
-    var board:Array<Array<String>>{
+    var board:Array<Array<Card>>{
         model.board
     }
     

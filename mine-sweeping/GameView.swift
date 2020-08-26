@@ -16,10 +16,10 @@ struct GameView: View {
     var body: some View {
         ZStack{
             VStack{
-                ForEach(0..<viewModel.size) {i in
+                ForEach(0..<viewModel.size,id:\.self) {i in
                     HStack{
-                        ForEach(0..<self.viewModel.size) {j in
-                            CardView(value: self.viewModel.board[i][j])
+                        ForEach(0..<self.viewModel.size,id:\.self) {j in
+                            CardView(card:  self.viewModel.board[i][j])
                                 .gesture(TapGesture().onEnded{_ in
                                     if(self.viewModel.status == GameStatus.running){
                                         self.viewModel.tap(x: j, y: i)
@@ -49,9 +49,7 @@ struct GameView: View {
             Text("Bang💥 You lost! wanna try again?")
             renderNewGame()
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(10)
+        .toastStyle()
     }
     
     func renderWin() -> some View {
@@ -62,9 +60,7 @@ struct GameView: View {
                 renderNextLevel()
             }
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(10)
+    .toastStyle()
     }
     
     func renderNewGame() -> some View {
@@ -84,5 +80,22 @@ struct GameView: View {
 struct BoardView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(viewModel: GameViewModel())
+    }
+}
+
+struct TipToast: ViewModifier{
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(Color.white)
+            .cornerRadius(10)
+            .transition(.offset(x: 0, y: 300))
+            .animation(.easeInOut)
+    }
+}
+
+extension View {
+    func toastStyle() -> some View {
+        self.modifier(TipToast())
     }
 }

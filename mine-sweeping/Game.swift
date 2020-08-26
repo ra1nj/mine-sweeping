@@ -15,7 +15,7 @@ enum GameStatus{
 }
 
 struct Game {
-    var board: Array<Array<String>> = []
+    var board: Array<Array<Card>> = []
     var size:Int
     var status:GameStatus
     
@@ -29,12 +29,12 @@ struct Game {
             while mineIndexSet.count < minesNum {
                 mineIndexSet.insert(Int.random(in: 0..<size))
             }
-            var arr:Array<String> = []
+            var arr:Array<Card> = []
             for j in 0..<size{
                 if(mineIndexSet.contains(j)){
-                    arr.append("M")
+                    arr.append(Card("M"))
                 }else{
-                    arr.append("E")
+                    arr.append(Card("E"))
                 }
             }
             board.append(arr)
@@ -47,15 +47,15 @@ struct Game {
         if(x < 0 || x >= board[0].count || y < 0 || y >= board.count){
             return
         }
-        if(board[y][x] == "M"){
-            board[y][x] = "X"
+        if(board[y][x].value == "M"){
+            board[y][x].value = "X"
             status = .lost
             return
         }
-        if(board[y][x] == "E"){
+        if(board[y][x].value == "E"){
             let num = findMineNum(x: x, y: y)
             if(num == 0){
-                board[y][x] = "B"
+                board[y][x].value = "B"
                 for i in y-1...y+1{
                     for j in x-1...x+1{
                         tap(x: j, y: i)
@@ -63,7 +63,7 @@ struct Game {
                 }
                 
             }else{
-                board[y][x] = String(num)
+                board[y][x].value = String(num)
             }
         }
         if(isWin()){
@@ -96,7 +96,7 @@ struct Game {
     
     func isMine(x:Int,y:Int) -> Bool {
         if(isWithinBoard(x: x, y: y)){
-            return board[y][x] == "M"
+            return board[y][x].value == "M"
         }else{
             return false
         }
@@ -106,7 +106,7 @@ struct Game {
         var res = true
         for i in 0..<size {
             for j in 0..<size {
-                if(board[i][j] == "E"){
+                if(board[i][j].value == "E"){
                     res = false
                 }
             }
