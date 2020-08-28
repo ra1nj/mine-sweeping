@@ -21,7 +21,7 @@ struct Game {
     
     var score:Int = 0
     
-    var bonus:Int = 100
+    var bonus:Int = 1
     
     init(size:Int) {
         self.status = .running

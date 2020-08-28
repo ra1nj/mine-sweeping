@@ -45,6 +45,7 @@ struct GameView: View {
         return HStack{
             ForEach(Array(score),id: \.self){char in
                 Image(systemName: "\(char).square.fill")
+                    .transition(.asymmetric(insertion: .move(edge: .top), removal: .identity) ).animation(.easeInOut)
             }
         }
     }
